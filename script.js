@@ -6,7 +6,7 @@ var app = express() ;
 
 
 
-
+//Constantes para conectarse a la Base de Datos
 var connection = mysql.createConnection({
 
 
@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
 
 }) ; 
 
-
+//Conectarse a MySQL
 connection.connect( function (error) {
 
 		if(!!error)
@@ -60,7 +60,7 @@ app.get ('/crearBD', function(req, res) {
 		{
 
 			console.log(result);
-			res.send('base de datos creada') ;
+			res.send('Base de datos creada') ;
 
 		}
 	});
@@ -94,7 +94,7 @@ app.get ('/crearTabla', function(req, res) {
 		{
 
 			console.log(result);
-			res.send('tabla creada') ;
+			res.send('Tabla creada') ;
 
 		}
 	});
@@ -129,13 +129,86 @@ app.get ('/insertarDatos', function(req, res) {
 		{
 
 			console.log(result);
-			res.send('registro insertado') ;
+			res.send('Registro insertado') ;
 
 		}
 	});
 
 
 }) 
+
+
+
+
+
+
+
+
+
+
+//Ver los registros
+app.get ('/verDatos', function(req, res) {
+
+	
+	let sql ='SELECT * FROM tabla';
+	let query = connection.query(sql, function(err, result){
+
+
+		if(err)
+		{
+
+			console.log(err);
+
+		}
+		else
+		{
+
+			
+			res.send(result) ;
+
+		}
+	});
+
+
+}) 
+
+
+
+
+
+//Actualizar los registros por id
+app.get ('/actualizar/:id', function(req, res) {
+
+	let actualizacion = "Juan Martinez"
+	let sql = `UPDATE tabla SET nombre= '${actualizacion}' WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
+	let query = connection.query(sql, function(err, result){
+
+
+		if(err)
+		{
+
+			console.log(err);
+
+		}
+		else
+		{
+
+			
+			res.send("Datos actualizados!") ;
+
+		}
+	});
+
+
+}) 
+
+
+
+
+
+ 
+
+
 
 
 
