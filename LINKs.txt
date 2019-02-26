@@ -28,3 +28,11 @@ https://code.tutsplus.com/es/tutorials/code-your-first-api-with-nodejs-and-expre
 7-
 
 https://github.com/mysqljs/mysql
+
+8-
+
+https://www.youtube.com/watch?v=hGZX_SA7lYg
+
+9-
+
+https://www.youtube.com/watch?v=EN6Dx22cPRI
