@@ -114,7 +114,7 @@ app.get ('/crearTabla', function(req, res) {
 //Insertar datos
 app.get ('/insertarDatos', function(req, res) {
 
-	let post ={nombre: "Fernando Fernandez"} ;
+	let post ={nombre: "Juan Perez"} ;
 	let sql ='INSERT INTO tabla SET ?';
 	let query = connection.query(sql, post, function(err, result){
 
@@ -207,6 +207,33 @@ app.get ('/actualizar/:id', function(req, res) {
 
 
  
+
+//Eliminar los registros por id
+app.get ('/eliminar/:id', function(req, res) {
+
+
+	let sql = `DELETE FROM tabla WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
+	let query = connection.query(sql, function(err, result){
+
+
+		if(err)
+		{
+
+			console.log(err);
+
+		}
+		else
+		{
+
+			
+			res.send("Dato eliminado!") ;
+
+		}
+	});
+
+
+}) 
+
 
 
 
