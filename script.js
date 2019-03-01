@@ -77,7 +77,7 @@ app.get ('/crearBD', function(req, res) {
 
 
 //Crear tabla
-app.get ('/crearTabla', function(req, res) {
+app.post ('/crearTabla', function(req, res) {
 
 	let sql='CREATE TABLE tabla(id int AUTO_INCREMENT, nombre VARCHAR(255), PRIMARY KEY(id) )';
 
@@ -109,10 +109,10 @@ app.get ('/crearTabla', function(req, res) {
 
 
 
-
+/*
 
 //Insertar datos
-app.post ('/insertarDatos', function(req, res) {
+app.post ('/insertarDatoss', function(req, res) {
 	let nombre  = req.body.params
 	let post ={nombre: nombre} ;
 	let sql ='INSERT INTO tabla SET ?';
@@ -137,6 +137,34 @@ app.post ('/insertarDatos', function(req, res) {
 
 }) 
 
+*/
+
+
+//Insertar datos
+/*No funciona con POST -->*/app.get('/insertarDatos', function(req, res) {
+
+	let post ={nombre: "Gonzalo Gonzalez"} ;
+	let sql ='INSERT INTO tabla SET ?';
+	let query = connection.query(sql, post, function(err, result){
+
+
+		if(err)
+		{
+
+			console.log(err);
+
+		}
+		else
+		{
+
+			console.log(result);
+			res.send('registro insertado') ;
+
+		}
+	});
+
+
+}) 
 
 
 
@@ -146,7 +174,12 @@ app.post ('/insertarDatos', function(req, res) {
 
 
 
+//Permisos para AJAX
 app.use(cors())
+
+
+
+
 
 //Ver los registros
 app.get ('/verDatos', function(req, res) {
@@ -185,7 +218,7 @@ app.get ('/verDatos', function(req, res) {
 //Actualizar los registros por id
 app.get ('/actualizar/:id', function(req, res) {
 
-	let actualizacion = "Juan Martinez"
+	let actualizacion = "Gonzalo Gonzales"
 	let sql = `UPDATE tabla SET nombre= '${actualizacion}' WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
 	let query = connection.query(sql, function(err, result){
 

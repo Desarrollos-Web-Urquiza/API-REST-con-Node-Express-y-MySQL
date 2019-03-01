@@ -1,5 +1,5 @@
 
-
+/*
 var persona =  {
 
 
@@ -28,7 +28,6 @@ var persona =  {
 
 } ;
  
-
 /*
 
 //FOR para recorrer objetos 
@@ -40,7 +39,7 @@ for(let i in persona){
 }
 */
 
-
+/*
 
 console.log("Buscando color de ema", obtenerColor("ema"))
 	
@@ -106,3 +105,69 @@ console.log(objeto)
 // objeto a string
 let stringOtraVez = JSON.stringify(objeto)
 console.log(stringOtraVez)
+*/
+
+
+
+
+
+
+//METODO AJAX
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	
+    	console.log('todo ok',  )
+    	
+  		
+	let objeto = JSON.parse(this.responseText) // esto ya es un objeto normal
+	console.log(objeto)
+
+
+
+
+		
+			
+		//Mediante AJAX, traigo el registro de todos los nombres y los imprimo con este FOR
+		for(let i in objeto){
+
+			document.write(objeto[i].nombre)
+			document.write("<br>")
+			
+
+		}
+
+
+
+
+
+
+
+
+    }
+  };
+
+
+
+  
+  xhttp.open("GET", "http://127.0.0.1:8080/verDatos", false);
+
+  xhttp.send();
+  
+
+
+
+
+// Trabajando con objetos y strings
+
+// string a objeto
+
+
+
+
+
+// // objeto a string
+// let stringOtraVez = JSON.stringify(objeto)
+// console.log(stringOtraVez)
