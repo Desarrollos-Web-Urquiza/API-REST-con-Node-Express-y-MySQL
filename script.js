@@ -1,6 +1,6 @@
 var express = require ('express') ; 
 var mysql = require ('mysql') ; 
-
+const cors = require("cors")
 
 var app = express() ; 
 
@@ -112,9 +112,9 @@ app.get ('/crearTabla', function(req, res) {
 
 
 //Insertar datos
-app.get ('/insertarDatos', function(req, res) {
-
-	let post ={nombre: "Juan Perez"} ;
+app.post ('/insertarDatos', function(req, res) {
+	let nombre  = req.body.params
+	let post ={nombre: nombre} ;
 	let sql ='INSERT INTO tabla SET ?';
 	let query = connection.query(sql, post, function(err, result){
 
@@ -146,10 +146,11 @@ app.get ('/insertarDatos', function(req, res) {
 
 
 
+app.use(cors())
+
 //Ver los registros
 app.get ('/verDatos', function(req, res) {
 
-	
 	let sql ='SELECT * FROM tabla';
 	let query = connection.query(sql, function(err, result){
 
@@ -157,7 +158,8 @@ app.get ('/verDatos', function(req, res) {
 		if(err)
 		{
 
-			console.log(err);
+			console.log(err)
+			res.send(err)
 
 		}
 		else
@@ -168,6 +170,10 @@ app.get ('/verDatos', function(req, res) {
 
 		}
 	});
+
+
+
+
 
 
 }) 
