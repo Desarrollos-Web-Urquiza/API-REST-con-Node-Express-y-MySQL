@@ -112,7 +112,60 @@ console.log(stringOtraVez)
 
 
 
-//METODO AJAX
+
+/*FUNCION PARA ELIMINAR NOMBRES*/
+function eliminar(id_nombre)
+{
+
+
+			
+//Mediante AJAX, eliminamos los registro recibiendo como argumento el id del nombre
+var url = `http:////127.0.0.1:8080/eliminar/${id_nombre}`;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+xhr.send(null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//METODO AJAX PARA IMPRIMIR NOMBRES
 
 
   var xhttp = new XMLHttpRequest();
@@ -133,7 +186,18 @@ console.log(stringOtraVez)
 		//Mediante AJAX, traigo el registro de todos los nombres y los imprimo con este FOR
 		for(let i in objeto){
 
-			document.write(objeto[i].nombre)
+			document.write(objeto[i].nombre) 
+			
+			var id_nombre = objeto[i].id
+			
+			
+
+			document.write( ` <input type='button' value='Eliminar' onclick=' eliminar(${id_nombre}) ' >`) 
+			
+
+
+
+
 			document.write("<br>")
 			
 
@@ -156,6 +220,23 @@ console.log(stringOtraVez)
 
   xhttp.send();
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

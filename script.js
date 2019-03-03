@@ -143,7 +143,7 @@ app.post ('/insertarDatoss', function(req, res) {
 //Insertar datos
 /*No funciona con POST -->*/app.get('/insertarDatos', function(req, res) {
 
-	let post ={nombre: "Gonzalo Gonzalez"} ;
+	let post ={nombre: "Fernando Fernandez"} ;
 	let sql ='INSERT INTO tabla SET ?';
 	let query = connection.query(sql, post, function(err, result){
 
@@ -234,6 +234,7 @@ app.get ('/actualizar/:id', function(req, res) {
 
 			
 			res.send("Datos actualizados!") ;
+
 
 		}
 	});
