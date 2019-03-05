@@ -216,9 +216,9 @@ app.get ('/verDatos', function(req, res) {
 
 
 //Actualizar los registros por id
-app.get ('/actualizar/:id', function(req, res) {
+app.get ('/actualizar/:id/:actualizacion', function(req, res) {
 
-	let actualizacion = "Gonzalo Gonzales"
+	let actualizacion = req.params.actualizacion
 	let sql = `UPDATE tabla SET nombre= '${actualizacion}' WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
 	let query = connection.query(sql, function(err, result){
 

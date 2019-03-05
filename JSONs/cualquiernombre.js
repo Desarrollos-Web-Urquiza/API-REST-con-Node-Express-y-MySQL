@@ -113,6 +113,12 @@ console.log(stringOtraVez)
 
 
 
+
+																/*FUNCIONES*/
+
+
+
+
 /*FUNCION PARA ELIMINAR NOMBRES*/
 function eliminar(id_nombre)
 {
@@ -145,6 +151,71 @@ xhr.send(null);
 
 
 
+
+
+
+
+/*FUNCION PARA INSERTAR NOMBRES*/
+function insertar(nombre)
+{
+
+//Mediante AJAX, insertamos el registro recibiendo como argumento el nombre pasado en el input de "index.html"
+var url = `http:////127.0.0.1:8080/insertarDatos/${nombre}`;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+xhr.send(null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+/*FUNCION PARA MODIFICAR NOMBRES*/
+function editar(modificado, name)
+{
+
+
+
+
+
+
+
+//Mediante AJAX, insertamos el registro recibiendo como argumento el nombre pasado en el input de "index.html"
+
+
+var url = `http:////127.0.0.1:8080/actualizar/${name}/${modificado}`;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+xhr.send(null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -191,16 +262,38 @@ xhr.send(null);
 			var id_nombre = objeto[i].id
 			
 			
-
+			//Botón para eleminar registros
 			document.write( ` <input type='button' value='Eliminar' onclick=' eliminar(${id_nombre}) ' >`) 
 			
 
+			
+			document.write("<br>")
+			
+			document.write( `   
+
+
+<form action='sendbymail.php' name='frmInsertar' method='post'>
+
+				<br>
+				¿Desea cambiar este nombre?<input type='text' name="nombreModificado${[i]}"  >
+
+
+				<input type='button' value='Editar' onclick ='editar(document.frmInsertar.nombreModificado${[i]}.value, ${id_nombre})' > 
+			
+
+
+
+
+				`) 
+			
 
 
 
 			document.write("<br>")
 			
-
+			document.write("<br>")
+			
+			
 		}
 
 
@@ -239,35 +332,6 @@ xhr.send(null);
 
 
 
-
-
-
-
-/*FUNCION PARA ELIMINAR NOMBRES*/
-function insertar(nombre)
-{
-
-//Mediante AJAX, eliminamos los registro recibiendo como argumento el id del nombre
-var url = `http:////127.0.0.1:8080/insertarDatos/${nombre}`;
-var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
-
-xhr.send(null);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 
 
 
