@@ -141,9 +141,9 @@ app.post ('/insertarDatoss', function(req, res) {
 
 
 //Insertar datos
-/*No funciona con POST -->*/app.get('/insertarDatos', function(req, res) {
+/*No funciona con POST -->*/app.get('/insertarDatos/:nombre', function(req, res) {
 
-	let post ={nombre: "Fernando Fernandez"} ;
+	let post ={nombre: req.params.nombre} ;
 	let sql ='INSERT INTO tabla SET ?';
 	let query = connection.query(sql, post, function(err, result){
 

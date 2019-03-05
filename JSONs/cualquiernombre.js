@@ -241,6 +241,61 @@ xhr.send(null);
 
 
 
+
+
+/*FUNCION PARA ELIMINAR NOMBRES*/
+function insertar(nombre)
+{
+
+//Mediante AJAX, eliminamos los registro recibiendo como argumento el id del nombre
+var url = `http:////127.0.0.1:8080/insertarDatos/${nombre}`;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+xhr.send(null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Trabajando con objetos y strings
 
 // string a objeto
