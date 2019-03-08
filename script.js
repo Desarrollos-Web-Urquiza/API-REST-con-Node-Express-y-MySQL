@@ -4,6 +4,12 @@ const cors = require("cors")
 
 var app = express() ; 
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 
 
 //Constantes para conectarse a la Base de Datos
@@ -141,9 +147,10 @@ app.post ('/insertarDatoss', function(req, res) {
 
 
 //Insertar datos
-/*No funciona con POST -->*/app.get('/insertarDatos/:nombre', function(req, res) {
+app.post('/insertarDatos', function(req, res) {
 
-	let post ={nombre: req.params.nombre} ;
+	let post ={nombre: req.body.name} ;//<-- Usamos "req.body.name" para recibir los datos de "cualquiernombre.js" mediante el "body-parser"
+	
 	let sql ='INSERT INTO tabla SET ?';
 	let query = connection.query(sql, post, function(err, result){
 

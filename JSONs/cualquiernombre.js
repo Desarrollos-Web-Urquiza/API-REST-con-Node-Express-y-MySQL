@@ -160,11 +160,14 @@ function insertar(nombre)
 {
 
 //Mediante AJAX, insertamos el registro recibiendo como argumento el nombre pasado en el input de "index.html"
-var url = `http:////127.0.0.1:8080/insertarDatos/${nombre}`;
+var url = `http:////127.0.0.1:8080/insertarDatos`;
 var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
+xhr.open("POST", url, true);
 
-xhr.send(null);
+//Send the proper header information along with the request
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+xhr.send(`name=${nombre}`);
 
 
 
