@@ -223,10 +223,10 @@ app.get ('/verDatos', function(req, res) {
 
 
 //Actualizar los registros por id
-app.get ('/actualizar/:id/:actualizacion', function(req, res) {
+app.put ('/actualizar', function(req, res) {
 
-	let actualizacion = req.params.actualizacion
-	let sql = `UPDATE tabla SET nombre= '${actualizacion}' WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
+	
+	let sql = `UPDATE tabla SET nombre= '${req.body.nuevoNombre}' WHERE id= ${req.body.id} `/*  ` <--- propiedad de ES6*/ ;
 	let query = connection.query(sql, function(err, result){
 
 
@@ -256,10 +256,10 @@ app.get ('/actualizar/:id/:actualizacion', function(req, res) {
  
 
 //Eliminar los registros por id
-app.get ('/eliminar/:id', function(req, res) {
+app.delete ('/eliminar/', function(req, res) {
 
 
-	let sql = `DELETE FROM tabla WHERE id= ${req.params.id} `/*  ` <--- propiedad de ES6*/ ;
+	let sql = `DELETE FROM tabla WHERE id= ${req.body.aidi} `/*  ` <--- propiedad de ES6*/ ;
 	let query = connection.query(sql, function(err, result){
 
 

@@ -126,11 +126,14 @@ function eliminar(id_nombre)
 
 			
 //Mediante AJAX, eliminamos los registro recibiendo como argumento el id del nombre
-var url = `http:////127.0.0.1:8080/eliminar/${id_nombre}`;
+var url = `http:////127.0.0.1:8080/eliminar/`;
 var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
+xhr.open("DELETE", url, true);
 
-xhr.send(null);
+//Send the proper header information along with the request
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+xhr.send(`aidi=${id_nombre}`);
 
 
 
@@ -187,7 +190,7 @@ xhr.send(`name=${nombre}`);
 
 
 /*FUNCION PARA MODIFICAR NOMBRES*/
-function editar(modificado, name)
+function editar(nombreModificado, ide)
 {
 
 
@@ -199,11 +202,15 @@ function editar(modificado, name)
 //Mediante AJAX, insertamos el registro recibiendo como argumento el nombre pasado en el input de "index.html"
 
 
-var url = `http:////127.0.0.1:8080/actualizar/${name}/${modificado}`;
+var url = `http:////127.0.0.1:8080/actualizar`;
 var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
+xhr.open("PUT", url, true);
 
-xhr.send(null);
+
+//Send the proper header information along with the request
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+xhr.send(`nuevoNombre=${nombreModificado}&id=${ide}`);
 
 
 
